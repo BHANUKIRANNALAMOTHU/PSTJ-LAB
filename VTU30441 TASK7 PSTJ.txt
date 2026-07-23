@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.function.BiFunction;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number: ");
+        int n = sc.nextInt();
+
+        BiFunction<Integer, Boolean, Integer> sum = (num, even) -> {
+            int s = 0;
+            while (num > 0) {
+                int d = num % 10;
+                if ((d % 2 == 0) == even)
+                    s += d;
+                num /= 10;
+            }
+            return s;
+        };
+
+        System.out.println("Even Digit Sum = " + sum.apply(n, true));
+        System.out.println("Odd Digit Sum = " + sum.apply(n, false));
+    }
+}
+
+OUTPUT:
+Enter number: 45
+Even Digit Sum = 4
+Odd Digit Sum = 5
